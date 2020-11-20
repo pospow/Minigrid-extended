@@ -1,1 +1,4 @@
 minigrid-extended/minigrid/.idea/*
+*__pycache__*
+*log*
+*.ipynb_checkpoints*
