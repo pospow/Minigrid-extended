@@ -1,6 +1,21 @@
-import numpy as np
+import gym
+import gym_minigrid
+from env_wrapper import FlatObsWrapper
 
 
-a = np.array([1,2,3,4,5])
+if __name__ == '__main__':
+    env = FlatObsWrapper(gym.make('MiniGrid-Empty-8x8-v0'))
 
-print(a[:-1])
+    env.reset()
+
+    action = env.actions.forward
+
+    obs, reward, done, info = env.step(action)
+
+    img = env.render('rgb_array')
+
+    print('Observation:', obs)
+    print('Reward: ', reward)
+    print('Done: ', done)
+    print('Info: ', info)
+    print('Image shape: ', img.shape)

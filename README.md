@@ -1,11 +1,20 @@
 # Minigrid-extended
-Minigrid environments to easily test and study RL algorithms
+ This is a forked version of  [```gym-minigrid```](https://github.com/maximecb/gym-minigrid)
+ with easy visualization, training and saving of the trained model
 
 ## What you can do with this package
 
-This toolset is a fork of gym-minigrid (https://github.com/maximecb/gym-minigrid), with a major structural refactoring, and code cleanups:
-- Unified structure for all algorithms
-- PEP8 compliant (unified code style)
-- Documented functions and classes
-- More tests & more code coverage
-- Additional algorithms: SAC and TD3 (+ HER support for DQN, DDPG, SAC and TD3)
+ This toolset would provide the following functionalities based on the ```gym-minigrid``` environment
+- Training: Unified structure for all RL libraries (including both model-based and model-free RL)
+  - [Stable Baselines]()
+  - [Rllib]()
+  - [Mbbl]()
+- Visualization
+  - [Tensorboard]()
+  - [Marplotlib]()
+- Saving and loading
+
+## Installation
+
+
+## Tutorial (pg_tutorial.ipynb)
