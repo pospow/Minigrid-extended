@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 from torch.distributions.categorical import Categorical
-from utils import count_model_params
+from minigrid.utils import count_model_params
 
 
 class ActorNetwork(nn.Module):

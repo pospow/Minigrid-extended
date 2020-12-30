@@ -151,6 +151,7 @@ class OptRewardMiniGridEnv(SubgoalMiniGridEnv):
     def reward_fn(self):
         """Computes reward proportional to shortest path distance from target."""
         target_pos = np.asarray([self.grid.height - 2, self.grid.width - 2])
+        max_dist = self.manhattan_distance(np.array([1, 1]), target_pos)
 
         if (self.horizontal and self.agent_pos[0] > self.subgoal_pos[0]) \
                 or (not self.horizontal and self.agent_pos[1] > self.subgoal_pos[1]):
@@ -160,7 +161,7 @@ class OptRewardMiniGridEnv(SubgoalMiniGridEnv):
                                                                                                        target_pos)
 
         if self.prev_dist is not None:
-            reward = (self.prev_dist - dist) / 20
+            reward = (self.prev_dist - dist) / max_dist
         else:
             reward = 0
         self.prev_dist = dist
