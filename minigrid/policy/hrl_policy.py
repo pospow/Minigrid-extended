@@ -1,12 +1,12 @@
 import tensorflow as tf
 import numpy as np
 import gym
-from minigrid.statistics.running_mean import RunningMean
+from minigrid.statistics.running_mean import RunningMean, RunningMeanTF
 from minigrid.util.tf_util import *
 
 
 class Policy():
-    def __init__(self, name, ob, hid_size, num_hid_layers, num_subpolicies, gaussian_fixed_var=True):
+    def __init__(self, name, ob, ob_length, hid_size, num_hid_layers, num_subpolicies, gaussian_fixed_var=True):
         self.hid_size = hid_size
         self.num_hid_layers = num_hid_layers
         self.num_subpolicies = num_subpolicies
@@ -15,7 +15,7 @@ class Policy():
         with tf.variable_scope(name):
             self.scope = tf.get_variable_scope().name
             with tf.variable_scope('obfilter'):
-                self.ob_rms = RunningMean(size=ob.shape[1], is_state=True, episode_steps=200)
+                self.ob_rms = RunningMeanTF(size=ob_length, shape=ob.shape[1])
 
             for i in range(ob.shape[1]):
                 number = np.random.rand()
@@ -37,4 +37,4 @@ if __name__ == '__main__':
     env = gym.make('CartPole-v0')
     ob_space = env.observation_space
     inputs = tf.placeholder(name='ob', dtype=tf.float32, shape=[None, ob_space.shape[0]])
-    test_policy = Policy(name='policy', ob=inputs, hid_size=32, num_hid_layers=2, num_subpolicies=3)
+    test_policy = Policy(name='policy', ob=inputs, ob_length=10, hid_size=32, num_hid_layers=2, num_subpolicies=3)

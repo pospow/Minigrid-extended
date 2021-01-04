@@ -14,16 +14,19 @@ if __name__ == '__main__':
     # print(np.square(a - 3.2))
 
 
-    test_rm = RunningMean(size=10, is_state=True, episode_steps=200)
-    for i in range(10):
-        number = np.random.rand()
-        print(number)
-        test_rm.update(number)
+    # test_rm = RunningMean(size=10, is_state=True, episode_steps=200)
+    # for i in range(10):
+    #     number = np.random.rand()
+    #     print(number)
+    #     test_rm.update(number)
     # print(test_rm.get_normalized_by_rms())
     # print(test_rm.get_normalized_by_mean())
-    print(test_rm.get_normalized_by_gaussian())
+    # print(test_rm.get_normalized_by_gaussian())
 
 
     # env = gym.make('CartPole-v0')
     # env.reset()
     # print(env.action_space)
+
+    a = np.array([1,2,3])
+    print(np.square(a))
